@@ -1,0 +1,21 @@
+version: '3'
+services:
+  neo4j:
+    image: neo4j:4.4.9-community
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - ./neo4j/conf:/conf
+#      - ./neo4j/data:/data
+      - ./neo4j/import:/import
+      - ./neo4j/logs:/logs
+      - ./neo4j/plugins:/plugins
+    environment:
+      # User Credentials
+      NEO4J_AUTH: neo4j/streams
+      NEO4J_dbms_logs_debug_level: DEBUG
+      # Raise memory limits
+      NEO4J_dbms_memory_pagecache_size: 1G
+      NEO4J_dbms.memory.heap.initial_size: 1G
+      NEO4J_dbms_memory_heap_max__size: 1G

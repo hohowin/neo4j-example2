@@ -1,0 +1,3 @@
+MATCH p=()-[r:IS_MAGIC_PLACE_FEATURE]->() RETURN p LIMIT 25;
+
+MATCH (s:DistributionCenter) -[l:LINKED]-> (t:DistributionCenter) WHERE s.country = 'Spain' RETURN s,min(l.distance), t;
